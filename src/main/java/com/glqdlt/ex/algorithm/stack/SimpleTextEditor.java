@@ -1,6 +1,7 @@
 package com.glqdlt.ex.algorithm.stack;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Stack;
 
 /**
@@ -25,21 +26,18 @@ import java.util.Stack;
  */
 public class SimpleTextEditor {
 
-    private String text;
     private final Stack<String> left = new Stack<>();
     private final Stack<String> right = new Stack<>();
 
 
     public String getText() {
-        return text;
+        String a = this.left.stream().reduce((acc, x) -> acc + x).orElse("");
+        String b = this.right.stream().sorted(Comparator.reverseOrder()).reduce((acc, x) -> acc + x).orElse("");
+        return a + b;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
 
     public SimpleTextEditor(String text) {
-        this.text = text;
         String[] rr = text.split("");
         this.left.addAll(Arrays.asList(rr));
     }
@@ -47,5 +45,5 @@ public class SimpleTextEditor {
     public Integer getCursorIndex() {
         return this.left.size();
     }
-s
+
 }
