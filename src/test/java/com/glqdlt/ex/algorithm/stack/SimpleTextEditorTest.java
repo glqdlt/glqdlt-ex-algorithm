@@ -24,4 +24,27 @@ public class SimpleTextEditorTest {
         Assert.assertEquals(3, (long) simpleTextEditor.getCursorIndex());
     }
 
+    @Test
+    public void movement() {
+        cursorPoint();
+        simpleTextEditor.moveToLeft();
+        Assert.assertEquals(2, (long) simpleTextEditor.getCursorIndex());
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+        simpleTextEditor.moveToLeft();
+        Assert.assertEquals(1, (long) simpleTextEditor.getCursorIndex());
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+        simpleTextEditor.moveToLeft();
+        Assert.assertEquals(0, (long) simpleTextEditor.getCursorIndex());
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+        simpleTextEditor.moveToRight();
+        Assert.assertEquals(1, (long) simpleTextEditor.getCursorIndex());
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+    }
+
+    @Test
+    public void moveRightMax() {
+        simpleTextEditor.moveToRight();
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+        Assert.assertEquals(3, (long) simpleTextEditor.getCursorIndex());
+    }
 }
