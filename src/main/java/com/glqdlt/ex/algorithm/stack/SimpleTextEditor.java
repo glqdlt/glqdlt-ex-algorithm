@@ -65,7 +65,7 @@ public class SimpleTextEditor {
     }
 
     public void insert(String e) {
-        this.left.add(e);
+        this.left.addAll(Arrays.asList(e.split("")));
     }
 
     public void backspace() {
