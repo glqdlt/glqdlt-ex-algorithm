@@ -47,4 +47,35 @@ public class SimpleTextEditorTest {
         Assert.assertEquals("abc", simpleTextEditor.getText());
         Assert.assertEquals(3, (long) simpleTextEditor.getCursorIndex());
     }
+
+    @Test
+    public void insert() {
+        Assert.assertEquals("abc", simpleTextEditor.getText());
+        Assert.assertEquals(3, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.insert("e");
+        Assert.assertEquals("abce", simpleTextEditor.getText());
+        Assert.assertEquals(4, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.insert("e");
+        Assert.assertEquals("abcee", simpleTextEditor.getText());
+        Assert.assertEquals(5, (long) simpleTextEditor.getCursorIndex());
+    }
+
+    @Test
+    public void remove() {
+        simpleTextEditor.backspace();
+        Assert.assertEquals("ab", simpleTextEditor.getText());
+        Assert.assertEquals(2, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.moveToLeft();
+        Assert.assertEquals("ab", simpleTextEditor.getText());
+        Assert.assertEquals(1, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.moveToLeft();
+        Assert.assertEquals("ab", simpleTextEditor.getText());
+        Assert.assertEquals(0, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.delete();
+        Assert.assertEquals("b", simpleTextEditor.getText());
+        Assert.assertEquals(0, (long) simpleTextEditor.getCursorIndex());
+        simpleTextEditor.insert("c");
+        Assert.assertEquals("cb", simpleTextEditor.getText());
+        Assert.assertEquals(1, (long) simpleTextEditor.getCursorIndex());
+    }
 }

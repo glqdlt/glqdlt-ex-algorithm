@@ -63,4 +63,22 @@ public class SimpleTextEditor {
         String p = this.right.pop();
         this.left.add(p);
     }
+
+    public void insert(String e) {
+        this.left.add(e);
+    }
+
+    public void backspace() {
+        if (this.left.size() == 0) {
+            return;
+        }
+        this.left.pop();
+    }
+
+    public void delete() {
+        if (this.right.size() == 0) {
+            return;
+        }
+        this.right.pop();
+    }
 }
