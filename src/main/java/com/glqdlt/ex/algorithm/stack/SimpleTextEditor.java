@@ -1,5 +1,8 @@
 package com.glqdlt.ex.algorithm.stack;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 /**
  * 어떠한 에디터가 있다고 가정한다.
  * 에디터의 입력창에 문자abd 가 있고 마지막 글자 뒤에 커서가 있다.
@@ -23,6 +26,9 @@ package com.glqdlt.ex.algorithm.stack;
 public class SimpleTextEditor {
 
     private String text;
+    private final Stack<String> left = new Stack<>();
+    private final Stack<String> right = new Stack<>();
+
 
     public String getText() {
         return text;
@@ -34,6 +40,12 @@ public class SimpleTextEditor {
 
     public SimpleTextEditor(String text) {
         this.text = text;
+        String[] rr = text.split("");
+        this.left.addAll(Arrays.asList(rr));
     }
 
+    public Integer getCursorIndex() {
+        return this.left.size();
+    }
+s
 }
